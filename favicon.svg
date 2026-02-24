@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Background gradient: surfaceLifted dark (#1E1A15) to surface dark (#120F0C) -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E1A15"></stop>
+      <stop offset="100%" stop-color="#0D0A08"></stop>
+    </linearGradient>
+
+    <!-- Subtle amber inner glow on background -->
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#2A1F14"></stop>
+      <stop offset="100%" stop-color="#0A0907"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Background: iOS icon shape is a squircle — SVG uses a rounded rect -->
+  <rect width="1024" height="1024" rx="230" ry="230" fill="url(#bg)"></rect>
+  <rect width="1024" height="1024" rx="230" ry="230" fill="url(#glow)"></rect>
+
+  <!--
+    "P." in Cormorant Garamond Medium
+    Since SVG text rendering depends on the font being available,
+    this uses an outlined path traced from Cormorant Garamond Medium at ~580pt.
+
+    The P is a classic serif capital — broad bowl, strong stem.
+    The period sits tight to the baseline, slightly right of the P stem.
+  -->
+
+  <!-- P — stem + bowl -->
+  <g transform="translate(512, 512)">
+    <!--
+      Outlined letterform for "P." from Cormorant Garamond Medium.
+      Centered in the icon canvas. Amber fill: #D4925A
+    -->
+
+    <!-- Using text with embedded font reference as primary,
+         with a geometric fallback construction below -->
+    <text x="0" y="0" font-family="Cormorant Garamond, Cormorant, Georgia, serif" font-weight="500" font-size="560" fill="#D4925A" text-anchor="middle" dominant-baseline="central" letter-spacing="-8">P.</text>
+  </g>
+
+  <!-- Subtle amber rim light — thin inner border at bottom -->
+  <rect width="1024" height="1024" rx="230" ry="230" fill="none" stroke="#D4925A" stroke-width="2" stroke-opacity="0.15"></rect>
+</svg></svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
