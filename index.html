@@ -38,6 +38,11 @@
         Built for the<br><em>follow-up.</em>
       </h1>
 
+      <p class="hero-sub">
+        Capture every meaningful introduction in seconds.<br>
+        Remember what others forget.
+      </p>
+
       <div class="cta-group">
         <div class="cta-card">
           <div class="ios-badge">
@@ -49,15 +54,67 @@
           </div>
         </div>
 
-        <a class="contact-link" href="mailto:hello@pocketlog.app">
-          hello@pocketlog.app
-        </a>
+        <div class="contact-wrapper">
+          <a class="contact-link" href="mailto:hello@pocketlog.app">
+            hello@pocketlog.app
+          </a>
+
+          <div class="vertical-divider"></div>
+        </div>
       </div>
     </main>
+
+    <section class="glass-section">
+      <div class="glass-card">
+        <p class="glass-text">
+          The best networkers in the world share one trait:
+          they follow up.
+        </p>
+
+        <p class="glass-sub">
+          Pocketlog is a private capture layer for professionals who move fast.
+          Designed to live quietly inside your Apple ecosystem.
+        </p>
+      </div>
+
+      <div class="principles">
+        <div>Private by default</div>
+        <div>On-device intelligence</div>
+        <div>Natively integrated</div>
+      </div>
+    </section>
+
+    <div class="beta-cta">
+      <p class="beta-eyebrow">Early access</p>
+      <h3 class="beta-headline">
+        Be the first when Pocketlog opens.
+      </h3>
+      <form class="beta-form" onsubmit="
+    event.preventDefault();
+    const email = this.querySelector('input').value;
+    const subject = encodeURIComponent('Pocketlog Beta Request');
+    const body = encodeURIComponent(
+      'Email: ' + email +
+      '\n\nThis message was sent directly from the Pocketlog website. ' +
+      'A direct email like this ensures no middleman is collecting or storing your data.'
+    );
+    window.location.href =
+      'mailto:beta@pocketlog.app?subject=' + subject + '&body=' + body;
+  ">
+        <div class="input-row">
+          <input type="email" placeholder="you@company.com" required />
+          <button type="submit">Join</button>
+        </div>
+      </form>
+      <p class="beta-footnote">
+        You will receive a single email once a Beta is ready to install.
+      </p>
+    </div>
 
     <footer>
       © 2026 Pocketlog
     </footer>
+
   </div>
 
 </body>
