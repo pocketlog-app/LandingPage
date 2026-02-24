@@ -481,6 +481,7 @@ footer {
   .principles div:last-child::after {
     display: none;
   }
+  
   footer {
     padding: 24px;
   }
