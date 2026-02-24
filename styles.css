@@ -475,9 +475,12 @@ footer {
 @media (max-width: 600px) {
   .principles {
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
 
+  .principles div:last-child::after {
+    display: none;
+  }
   footer {
     padding: 24px;
   }
