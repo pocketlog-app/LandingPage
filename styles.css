@@ -252,6 +252,7 @@ body::before {
 .principles {
   display: flex;
   justify-content: center;
+  text-align: center;
   gap: 40px;
   font-family: 'DM Mono', monospace;
   font-size: 10px;
@@ -280,6 +281,7 @@ body::before {
 
 .beta-cta {
   margin: 140px auto;
+  padding: 0 24px 80px;
   text-align: center;
   max-width: 560px;
 }
@@ -309,7 +311,7 @@ body::before {
   display: flex;
   align-items: center;
   gap: 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding-bottom: 10px;
   width: 100%;
   transition: border-color 0.25s ease;
@@ -317,7 +319,7 @@ body::before {
 
 /* Hover state */
 .input-row:hover {
-  border-bottom-color: rgba(212,146,90,0.5);
+  border-bottom-color: rgba(212, 146, 90, 0.5);
 }
 
 /* Focus state */
@@ -408,6 +410,54 @@ body::before {
 
 .policy-section li {
   margin-bottom: 8px;
+}
+
+/* ============================= */
+/* Back Link */
+/* ============================= */
+
+.back-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: inline-block;
+  margin-bottom: 40px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--amber);
+  transform: translateX(-2px);
+}
+
+/* ============================= */
+/* Privacy Pill */
+/* ============================= */
+
+.privacy-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(212, 146, 90, 0.06);
+  border: 1px solid rgba(212, 146, 90, 0.25);
+  display: inline-block;
+  margin-bottom: 28px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.privacy-pill:hover {
+  background: rgba(212, 146, 90, 0.12);
+  border-color: rgba(212, 146, 90, 0.45);
+  transform: translateY(-1px);
 }
 
 /* Footer */
