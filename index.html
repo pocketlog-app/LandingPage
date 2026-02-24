@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="home">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pocketlog</title>
 
-  <!-- Primary -->
   <meta name="description" content="Pocketlog - Built for the follow-up.">
-
   <meta property="og:title" content="Pocketlog">
   <meta property="og:description" content="Built for the follow-up.">
   <meta property="og:url" content="https://pocketlog.app">
@@ -20,293 +19,47 @@
   <link rel="icon" type="image/svg+xml" href="AppIcon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --amber:        #D4925A;
-      --sage:         #7A9E8C;
-      --bg:           #0A0907;
-      --text-primary: #F5F0E8;
-      --text-mid:     #B8B0A4;
-      --text-dim:     #6A6460;
-      --glass-bg:     rgba(255,255,255,0.04);
-      --glass-border: rgba(255,255,255,0.08);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text-primary);
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0.6;
-    }
-
-    .ambient {
-      position: fixed;
-      top: -30vh;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80vw;
-      height: 60vh;
-      background: radial-gradient(ellipse at center, rgba(212,146,90,0.07) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 32px 48px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.1s forwards;
-    }
-
-    .wordmark {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: 22px;
-      letter-spacing: 0.04em;
-      color: var(--text-primary);
-    }
-    .wordmark span { color: var(--amber); }
-
-    .nav-pill {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      padding: 8px 16px;
-      border-radius: 100px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .hero {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 24px 60px;
-    }
-
-    .eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 32px;
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.3s forwards;
-    }
-
-    .hero-title {
-      font-weight: 300;
-      font-size: clamp(52px, 9vw, 108px);
-      line-height: 0.95;
-      letter-spacing: -0.01em;
-      color: var(--text-primary);
-      margin-bottom: 36px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.45s forwards;
-    }
-    .hero-title em { font-style: italic; color: var(--amber); }
-
-    .hero-sub {
-      font-weight: 300;
-      font-size: clamp(17px, 2.2vw, 22px);
-      line-height: 1.6;
-      color: var(--text-mid);
-      max-width: 480px;
-      margin-bottom: 56px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.6s forwards;
-    }
-
-    .cta-group {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.75s forwards;
-    }
-
-    .cta-card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 18px 28px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .cta-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 32px rgba(212,146,90,0.08), inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-
-    .ios-badge { display: flex; align-items: center; gap: 10px; }
-
-    .ios-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(145deg, #1E1A15, #0D0A08);
-      border-radius: 9px;
-      border: 1px solid rgba(212,146,90,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 16px;
-      color: var(--amber);
-      flex-shrink: 0;
-    }
-
-    .ios-text { text-align: left; }
-    .ios-text .label {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      line-height: 1;
-      margin-bottom: 3px;
-    }
-    .ios-text .value {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 15px;
-      color: var(--text-primary);
-      line-height: 1;
-    }
-
-    .divider-v { width: 1px; height: 28px; background: var(--glass-border); }
-
-    .platform-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--sage);
-    }
-
-    .contact-link {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .contact-link:hover { color: var(--amber); }
-
-    footer {
-      padding: 32px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(255,255,255,0.04);
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.9s forwards;
-    }
-    footer .copy {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      nav { padding: 24px; }
-      .hero { padding: 60px 20px 40px; }
-      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
-    }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div class="ambient"></div>
+  <div class="ambient"></div>
 
-<div class="page">
+  <div class="page">
 
-  <main class="hero">
-    <p class="eyebrow">Private by design</p>
+    <main class="hero">
+      <a href="privacy.html" class="eyebrow">Private by design</a>
 
-    <h1 class="hero-title">
-      Built for the<br><em>follow-up.</em>
-    </h1>
+      <h1 class="hero-title">
+        Built for the<br><em>follow-up.</em>
+      </h1>
 
-    <p class="hero-sub">
-      Recall the context.<br>
-      Show up prepared.
-    </p>
-
-    <div class="cta-group">
-      <div class="cta-card">
-        <div class="ios-badge">
-          <div class="ios-icon">P.</div>
-          <div class="ios-text">
-            <div class="label">Coming soon</div>
-            <div class="value">Pocketlog for iPhone</div>
+      <div class="cta-group">
+        <div class="cta-card">
+          <div class="ios-badge">
+            <div class="ios-icon">P.</div>
+            <div class="ios-text">
+              <div class="label">Coming soon</div>
+              <div class="value">Pocketlog for iPhone</div>
+            </div>
           </div>
         </div>
+
+        <a class="contact-link" href="mailto:hello@pocketlog.app">
+          hello@pocketlog.app
+        </a>
       </div>
+    </main>
 
-      <a class="contact-link" href="mailto:hello@pocketlog.app">hello@pocketlog.app</a>
-    </div>
-  </main>
-
-  <footer>
-    <span class="copy">© 2026 Pocketlog</span>
-    <span class="copy">All data stays on device.</span>
-  </footer>
-
-</div>
+    <footer>
+      © 2026 Pocketlog
+    </footer>
+  </div>
 
 </body>
+
 </html>
